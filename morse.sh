@@ -1,32 +1,32 @@
 #!/usr/bin/bash
 
 declare -A MORSE
-MORSE[A]=.-
-MORSE[B]=-...
-MORSE[C]=-.-.
-MORSE[D]=-..
-MORSE[E]=.
-MORSE[F]=..-.
-MORSE[G]=--.
-MORSE[H]=....
-MORSE[I]=..
-MORSE[J]=.---
-MORSE[K]=-.-
-MORSE[L]=.-..
-MORSE[M]=--
-MORSE[N]=-.
-MORSE[O]=---
-MORSE[P]=.--.
-MORSE[Q]=--.-
-MORSE[R]=.-.
-MORSE[S]=...
-MORSE[T]=-
-MORSE[U]=..-
-MORSE[V]=...-
-MORSE[W]=.--
-MORSE[X]=-..-
-MORSE[Y]=-.--
-MORSE[Z]=--..
+MORSE[a]=.-
+MORSE[b]=-...
+MORSE[c]=-.-.
+MORSE[d]=-..
+MORSE[e]=.
+MORSE[f]=..-.
+MORSE[g]=--.
+MORSE[h]=....
+MORSE[i]=..
+MORSE[j]=.---
+MORSE[k]=-.-
+MORSE[l]=.-..
+MORSE[m]=--
+MORSE[n]=-.
+MORSE[o]=---
+MORSE[p]=.--.
+MORSE[q]=--.-
+MORSE[r]=.-.
+MORSE[s]=...
+MORSE[t]=-
+MORSE[u]=..-
+MORSE[v]=...-
+MORSE[w]=.--
+MORSE[x]=-..-
+MORSE[y]=-.--
+MORSE[z]=--..
 MORSE[0]=-----
 MORSE[1]=.----
 MORSE[2]=..---
@@ -38,13 +38,15 @@ MORSE[7]=--...
 MORSE[8]=---..
 MORSE[9]=----.
 
-while read -n1 c ; do
-    M=${MORSE[$c]}
-    echo -n $M | while read -n1 ditdah ; do
-    	if [ $ditdah = '-' ] ; then
+while read -n1 c; do
+    M="${MORSE[${c,,}]}"
+    echo -n $M | while read -n1 ditdah; do
+    	if [ $ditdah = '-' ]; then
     	    play -n synth 0.3 sin 1000 gain 1 2> /dev/null
-    	else
+    	elif [ $ditdah = '.' ]; then
     	    play -n synth 0.1 sin 1000 gain 1 2> /dev/null
+#    	else
+#    	    play -n synth 0.1 sin 250 gain 1 2> /dev/null
     	fi
     done
     sleep 0.3
