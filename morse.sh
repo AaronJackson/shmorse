@@ -39,7 +39,7 @@ MORSE[8]=---..
 MORSE[9]=----.
 
 while read -n1 c ; do
-    M=${MORSE[$c]}
+    M="${MORSE[${c^^}]}"
     echo -n $M | while read -n1 ditdah ; do
     	if [ $ditdah = '-' ] ; then
     	    play -n synth 0.3 sin 1000 gain 1 2> /dev/null
